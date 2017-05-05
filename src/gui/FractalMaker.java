@@ -8,6 +8,13 @@ import guiPractice8.GUIApplication;
 public class FractalMaker extends GUIApplication {
 
 	FractScreen gameScreen;
+	public static FractalMaker game;;
+	
+	public static void main(String[] args){
+		game = new FractalMaker();
+		Thread app = new Thread(game);
+		app.start();
+	}
 	
 	@Override
 	protected void initScreen() {

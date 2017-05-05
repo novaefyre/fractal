@@ -4,3 +4,8 @@ Eduardo Rouse
 My goal today is to do some research on fractal generation and to import the gui jar so I can start 
 experimenting. Tomorrow I want to continue working on the basic setup, creating the classes I will need to make 
 this work.
+
+5/5/17
+Today, I got a screen up, and worked on the first Fractal class (PythTree). Tomorrow, I'm going to try to get 
+PythTree to show up on the screen, and, if i manage that, ensure it works as intended. The next step will be 
+developing a UI, and finally adding more fractals.

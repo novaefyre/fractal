@@ -1,20 +1,22 @@
 package fractals;
 
-import java.awt.Shape;
+import java.awt.Color;
 
 import guiPractice8.components.Component;
 
 public abstract class Fractal extends Component{
-
-	Shape base;
-	int iter;
 	
-	public Fractal(Shape base, int iterations,int x,int y,int w, int h) {
+	Color color;
+
+	public Fractal(int x, int y, int w, int h) {
 		super(x,y,w,h);
-		this.base = base;
-		iter = iterations;
+		update();
 	}
 	
-	public abstract void draw();
+	public abstract void draw(int iter);
+
+	public void setColor(Color c) {
+		color = c;
+	}
 
 }
