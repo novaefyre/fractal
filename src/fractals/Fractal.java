@@ -10,6 +10,7 @@ public abstract class Fractal extends Component{
 
 	public Fractal(int x, int y, int w, int h) {
 		super(x,y,w,h);
+		color = Color.black;
 		update();
 	}
 	
