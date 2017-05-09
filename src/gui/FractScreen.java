@@ -21,15 +21,15 @@ public class FractScreen extends Screen {
 
 	@Override
 	public void initObjects(ArrayList<Visible> viewObjects) {
-		testButton = new Button(40,200,80,40,"Test",new Color(0,76,153), new Action(){
+		testButton = new Button(100,200,80,40,"Test",new Color(0,76,153), new Action(){
 			public void act(){
 				
 			}
 		});
-		fract = new PythTree(2,20,100,40);
+		fract = new PythTree(1,20,100,40);
 		fract.setColor(Color.blue);
-		viewObjects.add(testButton);
 		viewObjects.add(fract);
+//		viewObjects.add(testButton);
 	}
 
 }

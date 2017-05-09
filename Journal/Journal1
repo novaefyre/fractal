@@ -14,3 +14,8 @@ developing a UI, and finally adding more fractals.
 I can make one rectangle appear on screen, but I don't know how to make more. I might need help. I'm trying to 
 make a composite shape out of multiple component shapes, and I barely understand what little help I can find 
 online.
+
+5/9/17
+So... it doesn't throw any exceptions anymore, but it still doesn't work. I tried using Area, ArrayLists of 
+shapes, and drawing directly to a Graphics2D object. Nothing worked correctly, if at all. I'm honestly not sure 
+what to do now.
