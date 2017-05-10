@@ -19,3 +19,9 @@ online.
 So... it doesn't throw any exceptions anymore, but it still doesn't work. I tried using Area, ArrayLists of 
 shapes, and drawing directly to a Graphics2D object. Nothing worked correctly, if at all. I'm honestly not sure 
 what to do now.
+
+5/10/17
+My fractal shows up on screen now. It even creates the correct number of shapes! now I just need to figure out 
+how to get each shape in the correct spot. After I fix that, I'll be done with the first fractal. I'm going to 
+make a UI when the Pythagoras Tree is done, and when the UI is complete, I'll make 2-3 more fractals (depending 
+on how much time and inclination I have left).

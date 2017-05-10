@@ -26,7 +26,7 @@ public class FractScreen extends Screen {
 				
 			}
 		});
-		fract = new PythTree(1,20,100,40);
+		fract = new PythTree(3,100,100,400);
 		fract.setColor(Color.blue);
 		viewObjects.add(fract);
 //		viewObjects.add(testButton);

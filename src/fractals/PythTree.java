@@ -15,8 +15,11 @@ public class PythTree extends Fractal {
 	private ArrayList<Shape> fractal = new ArrayList<Shape>();
 	
 	public PythTree(int i, int x, int y, int w) {
-		super(x, y, w, 2*w);
+		super(x, y, w, w);
 		draw(i);
+//		for(Shape s:fractal){
+//			System.out.println(s.toString());
+//		}
 		update();
 	}
 	
@@ -25,22 +28,25 @@ public class PythTree extends Fractal {
 	}
 
 	public void draw(int iter) {
+		if(iter < 0){
+			iter = Math.abs(iter);
+		}
 		start = iter;
-		draw(iter,0.0,getWidth());
+		draw(iter,0.0,50);
 	}
 	
 	public void draw(int iter, double angle, int b){
 		if(iter > 0){
-			int rectX = getX();
-			int rectY = getY();
-			if(angle >= 0){
-				rectX = (start-iter+1)*rectX;
-				rectY = (start-iter+1)*rectY;
-			}else{
-				rectX = (start-iter+1)*rectX*-1;
-				rectY = (start-iter+1)*rectY;
-			}
-			Shape r = new Rectangle(getX(),getY(),b-1,b-1);
+			int rectX = 20;
+			int rectY = 20;
+//			if(angle >= 0){
+//				rectX = (start-iter+1)*rectX;
+//				rectY = (start-iter+1)*rectY;
+//			}else{
+//				rectX = (start-iter+1)*rectX*-1;
+//				rectY = (start-iter+1)*rectY;
+//			}
+			Shape r = new Rectangle(rectX,rectY,b,b);
 			if(angle != 0){
 				AffineTransform transform = new AffineTransform();
 				transform.rotate(Math.toRadians(angle),rectX + b/2, rectY + b/2);
@@ -57,9 +63,15 @@ public class PythTree extends Fractal {
 	@Override
 	public void update(Graphics2D g) {
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		if(color != null)g.setColor(color);
+		if(color != null)
+			g.setColor(color);
+		else
+			g.setColor(Color.black);
+//		g.drawRect(0, 0, 100, 100);
+//		g.setColor(color.black);
 		if(fractal != null){
 			for(Shape s:fractal){
+				System.out.println(s.getBounds().getX()+", "+s.getBounds().getY()+", "+s.getBounds().getWidth());
 				g.draw(s);
 			}
 		}
