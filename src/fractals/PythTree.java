@@ -32,31 +32,27 @@ public class PythTree extends Fractal {
 			iter = Math.abs(iter);
 		}
 		start = iter;
-		draw(iter,0.0,50);
+		draw(iter,0.0,50,50,100);
 	}
 	
-	public void draw(int iter, double angle, int b){
+	public void draw(int iter, double angle, int b, double rectX, double rectY){
 		if(iter > 0){
-			int rectX = 20;
-			int rectY = 20;
-//			if(angle >= 0){
-//				rectX = (start-iter+1)*rectX;
-//				rectY = (start-iter+1)*rectY;
-//			}else{
-//				rectX = (start-iter+1)*rectX*-1;
-//				rectY = (start-iter+1)*rectY;
-//			}
-			Shape r = new Rectangle(rectX,rectY,b,b);
-			if(angle != 0){
+			Shape r = new Rectangle((int)rectX,(int)rectY,b,b);
+			if(iter != start){
 				AffineTransform transform = new AffineTransform();
-				transform.rotate(Math.toRadians(angle),rectX + b/2, rectY + b/2);
+				transform.rotate(Math.toRadians(angle*-1));
+				r = transform.createTransformedShape(r);
+				transform = new AffineTransform();
+				if(angle > 0){
+					transform.translate((rectX-r.getBounds().getX()-r.getBounds().getWidth()*0.5*Math.sqrt(2.0))*(start-iter), (rectY-r.getBounds().getY()-r.getBounds().getHeight()));
+				}else{
+					transform.translate((rectX-r.getBounds().getX()+r.getBounds().getWidth()*0.5*Math.sqrt(2.0))*(start-iter), (rectY-r.getBounds().getY()-r.getBounds().getHeight()));
+				}
 				r = transform.createTransformedShape(r);
 			}
 			fractal.add(r);
-//			Graphics2D g = getImage().createGraphics();
-//			g.draw(r);
-			draw(iter-1,angle-25,(int)(b*0.5*Math.sqrt(2.0)));
-			draw(iter-1,angle+25,(int)(b*0.5*Math.sqrt(2.0)));
+			draw(iter-1,angle-25,(int)(b*0.5*Math.sqrt(2.0)),r.getBounds().getX(),r.getBounds().getY());
+			draw(iter-1,angle+25,(int)(b*0.5*Math.sqrt(2.0)),r.getBounds().getX(),r.getBounds().getY());
 		}
 	}
 
@@ -71,7 +67,7 @@ public class PythTree extends Fractal {
 //		g.setColor(color.black);
 		if(fractal != null){
 			for(Shape s:fractal){
-				System.out.println(s.getBounds().getX()+", "+s.getBounds().getY()+", "+s.getBounds().getWidth());
+				System.out.println(s.getBounds().getX()+", "+s.getBounds().getY()+", "+s.getBounds().getWidth()+", "+s.getBounds().getHeight());
 				g.draw(s);
 			}
 		}
