@@ -14,8 +14,8 @@ public class PythTree extends Fractal {
 	
 	private ArrayList<Shape> fractal = new ArrayList<Shape>();
 	
-	public PythTree(int i, int x, int y, int w) {
-		super(x, y, w, w);
+	public PythTree(int i, int x, int y) {
+		super(x, y, 6*x, 4*y);
 		draw(i);
 //		for(Shape s:fractal){
 //			System.out.println(s.toString());
@@ -32,27 +32,27 @@ public class PythTree extends Fractal {
 			iter = Math.abs(iter);
 		}
 		start = iter;
-		draw(iter,0.0,50,50,100);
+		draw(iter,0.0,getX()/2,getY(),50);
 	}
 	
-	public void draw(int iter, double angle, int b, double rectX, double rectY){
+	public void draw(int iter, double angle, double rectX, double rectY, int b){
 		if(iter > 0){
 			Shape r = new Rectangle((int)rectX,(int)rectY,b,b);
 			if(iter != start){
 				AffineTransform transform = new AffineTransform();
-				transform.rotate(Math.toRadians(angle*-1));
+				transform.rotate(Math.toRadians(angle));
 				r = transform.createTransformedShape(r);
 				transform = new AffineTransform();
-				if(angle > 0){
-					transform.translate((rectX-r.getBounds().getX()-r.getBounds().getWidth()*0.5*Math.sqrt(2.0))*(start-iter), (rectY-r.getBounds().getY()-r.getBounds().getHeight()));
+				if(angle < 0){
+					transform.translate((rectX-r.getBounds().getX()-r.getBounds().getWidth()*0.5)*(start-iter), (rectY-r.getBounds().getY()-r.getBounds().getHeight()));
 				}else{
-					transform.translate((rectX-r.getBounds().getX()+r.getBounds().getWidth()*0.5*Math.sqrt(2.0))*(start-iter), (rectY-r.getBounds().getY()-r.getBounds().getHeight()));
+					transform.translate((rectX-r.getBounds().getX()+r.getBounds().getWidth()*0.5)*(start-iter), (rectY-r.getBounds().getY()-r.getBounds().getHeight()));
 				}
 				r = transform.createTransformedShape(r);
 			}
 			fractal.add(r);
-			draw(iter-1,angle-25,(int)(b*0.5*Math.sqrt(2.0)),r.getBounds().getX(),r.getBounds().getY());
-			draw(iter-1,angle+25,(int)(b*0.5*Math.sqrt(2.0)),r.getBounds().getX(),r.getBounds().getY());
+			draw(iter-1,angle-45,r.getBounds().getX(),r.getBounds().getY(),(int)(b*0.5*Math.sqrt(2.0)));
+			draw(iter-1,angle+45,r.getBounds().getX(),r.getBounds().getY(),(int)(b*0.5*Math.sqrt(2.0)));
 		}
 	}
 

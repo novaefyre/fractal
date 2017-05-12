@@ -12,6 +12,7 @@ import guiPractice8.components.Visible;
 
 public class FractScreen extends Screen {
 
+	@SuppressWarnings("unused")
 	private Button testButton;
 	private Fractal fract;
 	
@@ -26,7 +27,7 @@ public class FractScreen extends Screen {
 				
 			}
 		});
-		fract = new PythTree(3,100,100,1000);
+		fract = new PythTree(3,100,100);
 		fract.setColor(Color.blue);
 		viewObjects.add(fract);
 //		viewObjects.add(testButton);

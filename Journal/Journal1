@@ -2,30 +2,36 @@ Eduardo Rouse
 
 5/4/17
 My goal today is to do some research on fractal generation and to import the gui jar so I can start 
-experimenting. Tomorrow I want to continue working on the basic setup, creating the classes I will need to make 
+experimenting. Tomorrow I want to continue working on the basic setup, creating the classes I will need to make
 this work.
 
 5/5/17
-Today, I got a screen up, and worked on the first Fractal class (PythTree). Tomorrow, I'm going to try to get 
-PythTree to show up on the screen, and, if i manage that, ensure it works as intended. The next step will be 
+Today, I got a screen up, and worked on the first Fractal class (PythTree). Tomorrow, I'm going to try to get
+PythTree to show up on the screen, and, if i manage that, ensure it works as intended. The next step will be
 developing a UI, and finally adding more fractals.
 
 5/8/17
-I can make one rectangle appear on screen, but I don't know how to make more. I might need help. I'm trying to 
-make a composite shape out of multiple component shapes, and I barely understand what little help I can find 
+I can make one rectangle appear on screen, but I don't know how to make more. I might need help. I'm trying to
+make a composite shape out of multiple component shapes, and I barely understand what little help I can find
 online.
 
 5/9/17
-So... it doesn't throw any exceptions anymore, but it still doesn't work. I tried using Area, ArrayLists of 
-shapes, and drawing directly to a Graphics2D object. Nothing worked correctly, if at all. I'm honestly not sure 
+So... it doesn't throw any exceptions anymore, but it still doesn't work. I tried using Area, ArrayLists of
+shapes, and drawing directly to a Graphics2D object. Nothing worked correctly, if at all. I'm honestly not sure
 what to do now.
 
 5/10/17
 My fractal shows up on screen now. It even creates the correct number of shapes! now I just need to figure out 
 how to get each shape in the correct spot. After I fix that, I'll be done with the first fractal. I'm going to 
-make a UI when the Pythagoras Tree is done, and when the UI is complete, I'll make 2-3 more fractals (depending 
-on how much time and inclination I have left).
+make a UI when the Pythagoras Tree is done, and when the UI is complete, I'll make 2-3 more fractals
+(depending on how much time and inclination I have left).
 
 5/11/17
 Getting each part of the fractal in the right place is a lot harder than I thought it would be. My previous 
 plan remains, but I may need more time and /or help to finish PythTree.
+
+5/12/17
+Having spent more than two hours trying to fix PythTree, I have to admit defeat. I'm too frustrated to keep
+trying to tweak it, so I'm going to move on to building the UI. Since the UI isn't the main focus of my 
+project, I'm not going to spend too much time on it. I'll just build something simple and adjustable, mostly to
+give myself a break from PythTree, and then go and finish the actual project.
