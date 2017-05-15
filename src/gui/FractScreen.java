@@ -2,15 +2,17 @@ package gui;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.List;
 
 import fractals.Fractal;
-import fractals.PythTree;
-import guiPractice8.components.Action;
-import guiPractice8.components.Button;
-import guiPractice8.Screen;
-import guiPractice8.components.Visible;
+import fractals.SerpCarpet;
+import guiTeacher.components.Action;
+import guiTeacher.components.Button;
+import guiTeacher.components.TextField;
+import guiTeacher.interfaces.Visible;
+import guiTeacher.userInterfaces.FullFunctionScreen;
 
-public class FractScreen extends Screen {
+public class FractScreen extends FullFunctionScreen {
 
 	@SuppressWarnings("unused")
 	private Button testButton;
@@ -21,14 +23,16 @@ public class FractScreen extends Screen {
 	}
 
 	@Override
-	public void initObjects(ArrayList<Visible> viewObjects) {
+	public void initAllObjects(List<Visible> viewObjects) {
 		testButton = new Button(100,200,80,40,"Test",new Color(0,76,153), new Action(){
 			public void act(){
 				
 			}
 		});
-		fract = new PythTree(3,100,100);
+		fract = new SerpCarpet(2,20,20,100);
 		fract.setColor(Color.blue);
+		fract.update();
+		viewObjects.add(new TextField(400,200,100,25,"Enter Text Here","text"));
 		viewObjects.add(fract);
 //		viewObjects.add(testButton);
 	}

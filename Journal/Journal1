@@ -35,3 +35,6 @@ Having spent more than two hours trying to fix PythTree, I have to admit defeat.
 trying to tweak it, so I'm going to move on to building the UI. Since the UI isn't the main focus of my 
 project, I'm not going to spend too much time on it. I'll just build something simple and adjustable, mostly to
 give myself a break from PythTree, and then go and finish the actual project.
+
+5/15/17
+Working on Sierpinski carpet! Making progress, using updated GUI.

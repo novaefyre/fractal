@@ -2,7 +2,7 @@ package fractals;
 
 import java.awt.Color;
 
-import guiPractice8.components.Component;
+import guiTeacher.components.Component;
 
 public abstract class Fractal extends Component{
 	
@@ -11,7 +11,6 @@ public abstract class Fractal extends Component{
 	public Fractal(int x, int y, int w, int h) {
 		super(x,y,w,h);
 		color = Color.black;
-		update();
 	}
 	
 	public abstract void draw(int iter);

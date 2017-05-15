@@ -2,7 +2,7 @@ package gui;
 
 import java.awt.Dimension;
 
-import guiPractice8.GUIApplication;
+import guiTeacher.GUIApplication;
 
 @SuppressWarnings("serial")
 public class FractalMaker extends GUIApplication {
@@ -10,14 +10,19 @@ public class FractalMaker extends GUIApplication {
 	FractScreen gameScreen;
 	public static FractalMaker game;;
 	
+	public FractalMaker(){
+		super(800,500);
+	}
+	
 	public static void main(String[] args){
 		game = new FractalMaker();
 		Thread app = new Thread(game);
 		app.start();
+		game.setVisible(true);
 	}
 	
 	@Override
-	protected void initScreen() {
+	public void initScreen() {
 		Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 		gameScreen = new FractScreen((int)screenSize.getWidth(),(int)screenSize.getHeight());
 		setScreen(gameScreen);
