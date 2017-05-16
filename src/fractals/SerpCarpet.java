@@ -21,7 +21,6 @@ public class SerpCarpet extends Fractal {
 	public SerpCarpet(int i, int x, int y, int w) {
 		super(x, y, w, w);
 		startSquare = new Rectangle(x,y,w,w);
-		System.out.println(startSquare.toString());
 		start = i;
 		draw(i);
 		update();
@@ -32,11 +31,11 @@ public class SerpCarpet extends Fractal {
 		if(iter > 0){
 			if(start == -1)
 				start = iter;
-			Rectangle center = new Rectangle(startSquare.width/4+startSquare.x, startSquare.width/4+startSquare.y, startSquare.width/3, startSquare.width/3);
+			Rectangle center = new Rectangle(startSquare.width/3+startSquare.x-10, startSquare.width/3+startSquare.y-10, startSquare.width/3, startSquare.width/3);
 			subSquares.add(center);
 			for(int i = 0; i < 9; i++){
 				if(i != 5){
-					Rectangle base = new Rectangle(startSquare.x+(i*startSquare.width/3)%3, startSquare.y+((i/3)%3*startSquare.width), startSquare.width, startSquare.width);
+					Rectangle base = new Rectangle(startSquare.x+(i%3*startSquare.width/3), startSquare.y+((i/3)*startSquare.width), startSquare.width/3, startSquare.width/3);
 					draw(iter-1,base);
 				}
 			}
@@ -45,11 +44,11 @@ public class SerpCarpet extends Fractal {
 	
 	public void draw(int iter, Rectangle base){
 		if(iter > 0){
-			Rectangle center = new Rectangle(base.width/4+base.x, base.width/4+base.y, base.width/3, base.width/3);
+			Rectangle center = new Rectangle(base.width/3+base.x, base.width/3+base.y, base.width/3, base.width/3);
 			subSquares.add(center);
 			for(int i = 0; i < 9; i++){
 				if(i != 5){
-					Rectangle b = new Rectangle(base.x+(i*base.width/3)%3, base.y+((i/3)%3*base.width), base.width, base.width);
+					Rectangle b = new Rectangle(base.x+(i%3*base.width/3), base.y+(i/3*base.width), base.width/3, base.width/3);
 					draw(iter-1,b);
 				}
 			}
@@ -64,6 +63,7 @@ public class SerpCarpet extends Fractal {
 			g.fill(startSquare);
 			g.setColor(Color.white);
 			for(Rectangle s : subSquares){
+				System.out.println(s.toString());
 				g.fill(s);
 			}
 		}
