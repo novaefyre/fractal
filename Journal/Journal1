@@ -21,8 +21,8 @@ shapes, and drawing directly to a Graphics2D object. Nothing worked correctly, i
 what to do now.
 
 5/10/17
-My fractal shows up on screen now. It even creates the correct number of shapes! now I just need to figure out 
-how to get each shape in the correct spot. After I fix that, I'll be done with the first fractal. I'm going to 
+My fractal shows up on screen now. It even creates the correct number of shapes! now I just need to figure out
+how to get each shape in the correct spot. After I fix that, I'll be done with the first fractal. I'm going to
 make a UI when the Pythagoras Tree is done, and when the UI is complete, I'll make 2-3 more fractals
 (depending on how much time and inclination I have left).
 
@@ -41,3 +41,7 @@ Working on Sierpinski carpet! Making progress, using updated GUI.
 
 5/16/17
 Still Working on Sierpinski carpet. Making progress, almost done. Thinking about which fractal to do last.
+
+5/17/17
+Finally finished Sierpinski carpet! Moved on to an outline of my last fractal, Tree. After Tree, I'll make the
+UI. If I still have time after making the UI and polishing existing Fractals, I'll make more Fractals.

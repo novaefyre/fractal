@@ -29,7 +29,7 @@ public class FractScreen extends FullFunctionScreen {
 				
 			}
 		});
-		fract = new SerpCarpet(2,20,20,180);
+		fract = new SerpCarpet(6,30,40,500);
 		fract.setColor(Color.blue);
 		fract.update();
 		viewObjects.add(new TextField(400,200,100,25,"Enter Text Here","text"));
