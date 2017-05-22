@@ -6,6 +6,7 @@ import java.util.List;
 
 import fractals.Fractal;
 import fractals.SerpCarpet;
+import fractals.Tree;
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.TextField;
@@ -29,7 +30,7 @@ public class FractScreen extends FullFunctionScreen {
 				
 			}
 		});
-		fract = new SerpCarpet(6,30,40,500);
+		fract = new Tree(3,30,40,50,200);
 		fract.setColor(Color.blue);
 		fract.update();
 		viewObjects.add(new TextField(400,200,100,25,"Enter Text Here","text"));

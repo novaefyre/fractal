@@ -6,38 +6,45 @@ import java.util.ArrayList;
 
 public class Tree extends Fractal {
 
-	private ArrayList<int[]> coords;
+	private ArrayList<int[]> lineCoords;
 	
 	public Tree(int iter, int x, int y, int w, int h) {
 		super(x, y, w, h);
-		coords = new ArrayList<int[]>();
+		lineCoords = new ArrayList<int[]>();
 		draw(iter);
 	}
 
 	@Override
 	public void draw(int iter) {
 		int[] firstLine = {getX()/2,getY()+getHeight(),getX()/2,getY()+(getHeight()*2/3)};
-		coords.add(firstLine);
-		draw(iter-1,firstLine,25.0);
-		draw(iter-1,firstLine,-25.0);
+//		[X1,Y1,X2,Y2]
+		lineCoords.add(firstLine);
+		draw(iter-1,firstLine,30.0);
+		draw(iter-1,firstLine,-30.0);
 	}
 
-	private void draw(int iter, int[] LineCoords, double angle) {
+	private void draw(int iter, int[] oldCoords, double angle) {
 		if(iter > 0){
 			int[] newCoords = new int[4];
-			newCoords[0] = LineCoords[2];
-			newCoords[1] = LineCoords[3];
+			newCoords[0] = oldCoords[2];
+			newCoords[1] = oldCoords[3];
 			newCoords[2] = newCoords[0]*2/3;
 			newCoords[3] = newCoords[1]*2/3;
-			coords.add(newCoords);
-			draw(iter, newCoords,angle+25);
-			draw(iter, newCoords,angle-25);
+			newCoords[2] += (int)Math.tan(angle)/newCoords[2];
+			lineCoords.add(newCoords);
+			draw(iter-1, newCoords,angle+30);
+			draw(iter-1, newCoords,angle-30);
 		}
 	}
 
 	@Override
 	public void update(Graphics2D g) {
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		g.setColor(this.color);
+		for(int[] line:lineCoords){
+			System.out.println(line[0] + ", " + line[1] + ", " + line[2] + ", " + line[3]);
+			g.drawLine(line[0], line[1], line[2], line[3]);
+		}
 	}
 
 }
