@@ -19,8 +19,8 @@ public class Tree extends Fractal {
 		int[] firstLine = {getX()/2,getY()+getHeight(),getX()/2,getY()+(getHeight()*2/3)};
 //		[X1,Y1,X2,Y2]
 		lineCoords.add(firstLine);
-		draw(iter-1,firstLine,30.0);
-		draw(iter-1,firstLine,-30.0);
+		draw(iter-1,firstLine,20.0);
+		draw(iter-1,firstLine,-20.0);
 	}
 
 	private void draw(int iter, int[] oldCoords, double angle) {
@@ -28,12 +28,15 @@ public class Tree extends Fractal {
 			int[] newCoords = new int[4];
 			newCoords[0] = oldCoords[2];
 			newCoords[1] = oldCoords[3];
-			newCoords[2] = newCoords[0]*2/3;
-			newCoords[3] = newCoords[1]*2/3;
-			newCoords[2] += (int)Math.tan(angle)/newCoords[2];
+			newCoords[2] = newCoords[0] + (int) (Math.cos(Math.toRadians(angle)) * iter * 10);
+			newCoords[3] = newCoords[1] + (int) (Math.sin(Math.toRadians(angle)) * iter * 10);
+//			double tangentX = Math.tan(Math.toRadians(angle));
+//			if(tangentX != 0)
+//				newCoords[2] += (int)(newCoords[1]-newCoords[3])*Math.round(tangentX);
 			lineCoords.add(newCoords);
-			draw(iter-1, newCoords,angle+30);
-			draw(iter-1, newCoords,angle-30);
+//			System.out.println(angle + ", " + Math.toRadians(angle) + ", " + tangentX);
+			draw(iter-1, newCoords,angle+20);
+			draw(iter-1, newCoords,angle-20);
 		}
 	}
 

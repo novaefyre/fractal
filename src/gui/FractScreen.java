@@ -30,7 +30,7 @@ public class FractScreen extends FullFunctionScreen {
 				
 			}
 		});
-		fract = new Tree(3,30,40,50,200);
+		fract = new Tree(4,30,40,500,200);
 		fract.setColor(Color.blue);
 		fract.update();
 		viewObjects.add(new TextField(400,200,100,25,"Enter Text Here","text"));
