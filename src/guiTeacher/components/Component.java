@@ -107,6 +107,14 @@ public abstract class Component implements Visible {
 	public int getHeight() {
 		return h;
 	}
+	
+	public void setWidth(int w){
+		this.w = w;
+	}
+	
+	public void setHeight(int h){
+		this.h = h;
+	}
 
 	
 	public Graphics2D resize(){

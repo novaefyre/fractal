@@ -12,11 +12,19 @@ public class Tree extends Fractal {
 		super(x, y, w, h);
 		lineCoords = new ArrayList<int[]>();
 		draw(iter);
+		int maxX = maxCoord(2);
+		int maxY = maxCoord(3);
+		if(x+w<maxX){
+			setWidth(maxX-x);
+		}
+		if(y+h<maxY){
+			setHeight(maxY-y);
+		}
 	}
 
 	@Override
 	public void draw(int iter) {
-		int[] firstLine = {getX()/2,getY()+getHeight(),getX()/2,getY()+(getHeight()*2/3)};
+		int[] firstLine = {getX(),getY()+(getHeight()/3),getX()*2,getY()+(getHeight()/3)};
 //		[X1,Y1,X2,Y2]
 		lineCoords.add(firstLine);
 		draw(iter-1,firstLine,20.0);
@@ -34,10 +42,20 @@ public class Tree extends Fractal {
 //			if(tangentX != 0)
 //				newCoords[2] += (int)(newCoords[1]-newCoords[3])*Math.round(tangentX);
 			lineCoords.add(newCoords);
-//			System.out.println(angle + ", " + Math.toRadians(angle) + ", " + tangentX);
 			draw(iter-1, newCoords,angle+20);
 			draw(iter-1, newCoords,angle-20);
 		}
+	}
+	
+	public int maxCoord(int coordIdx){
+		int max = Integer.MIN_VALUE;
+		for(int[] line:lineCoords){
+			int coord = line[coordIdx];
+			if(coord > max){
+				max = coord;
+			}
+		}
+		return max;
 	}
 
 	@Override
