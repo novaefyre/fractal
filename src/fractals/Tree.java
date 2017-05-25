@@ -27,8 +27,8 @@ public class Tree extends Fractal {
 		int[] firstLine = {getX(),getY()+(getHeight()/3),getX()*2,getY()+(getHeight()/3)};
 //		[X1,Y1,X2,Y2]
 		lineCoords.add(firstLine);
-		draw(iter-1,firstLine,20.0);
-		draw(iter-1,firstLine,-20.0);
+		draw(iter-1,firstLine,15.0);
+		draw(iter-1,firstLine,-15.0);
 	}
 
 	private void draw(int iter, int[] oldCoords, double angle) {
@@ -36,14 +36,14 @@ public class Tree extends Fractal {
 			int[] newCoords = new int[4];
 			newCoords[0] = oldCoords[2];
 			newCoords[1] = oldCoords[3];
-			newCoords[2] = newCoords[0] + (int) (Math.cos(Math.toRadians(angle)) * iter * 10);
-			newCoords[3] = newCoords[1] + (int) (Math.sin(Math.toRadians(angle)) * iter * 10);
+			newCoords[2] = newCoords[0] + (int) (Math.cos(Math.toRadians(angle)) * iter * 5);
+			newCoords[3] = newCoords[1] + (int) (Math.sin(Math.toRadians(angle)) * iter * 5);
 //			double tangentX = Math.tan(Math.toRadians(angle));
 //			if(tangentX != 0)
 //				newCoords[2] += (int)(newCoords[1]-newCoords[3])*Math.round(tangentX);
 			lineCoords.add(newCoords);
-			draw(iter-1, newCoords,angle+20);
-			draw(iter-1, newCoords,angle-20);
+			draw(iter-1, newCoords,angle+15);
+			draw(iter-1, newCoords,angle-15);
 		}
 	}
 	
@@ -63,7 +63,7 @@ public class Tree extends Fractal {
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g.setColor(this.color);
 		for(int[] line:lineCoords){
-			System.out.println(line[0] + ", " + line[1] + ", " + line[2] + ", " + line[3]);
+//			System.out.println(line[0] + ", " + line[1] + ", " + line[2] + ", " + line[3]);
 			g.drawLine(line[0], line[1], line[2], line[3]);
 		}
 	}

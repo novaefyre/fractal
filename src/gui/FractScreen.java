@@ -5,19 +5,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fractals.Fractal;
-import fractals.SerpCarpet;
+import fractals.SierpCarpet;
 import fractals.Tree;
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
+import guiTeacher.components.ProgressBar;
+import guiTeacher.components.TextBox;
 import guiTeacher.components.TextField;
+import guiTeacher.interfaces.Task;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 
+@SuppressWarnings("serial")
 public class FractScreen extends FullFunctionScreen {
 
-	@SuppressWarnings("unused")
-	private Button testButton;
+	private Button treeButton;
+	private Button sierpButton;
+	private TextField iterations;
 	private Fractal fract;
+	private ProgressBar loading;
 	
 	public FractScreen(int width, int height) {
 		super(width, height);
@@ -25,17 +31,88 @@ public class FractScreen extends FullFunctionScreen {
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		testButton = new Button(100,200,80,40,"Test",new Color(0,76,153), new Action(){
+		iterations = new TextField(50,50,200,25,"Fractal Depth Here","Iterations");
+		TextBox errorBox = new TextBox(260,50,1000,25,"Error: Iterations must be an integer.");
+		loading = new ProgressBar(150, 100, 200, 20);
+		treeButton = new Button(50,100,80,40,"Tree",new Color(0,76,153), new Action(){
 			public void act(){
-				
+				String iterS = iterations.getText();
+				int iter = 0;
+				try{
+					iter = Math.abs(Integer.parseInt(iterS));
+				}catch(Exception e){
+					viewObjects.add(errorBox);
+				}
+				if(iter!=0)setFract(new Tree(iter,30,120,1000,400),viewObjects,null);
 			}
 		});
-		fract = new Tree(10,30,40,500,200);
-		fract.setColor(Color.blue);
+		sierpButton = new Button(50,150,120,40,"Sierpinski Square",new Color(0,76,153), new Action(){
+			public void act(){
+				String iterS = iterations.getText();
+				int iter = 0;
+				try{
+					iter = Math.abs(Integer.parseInt(iterS));
+				}catch(Exception e){
+					viewObjects.add(errorBox);
+				}
+				if(iter!=0){
+					final int i = iter;
+					loading.setTask(new Task() {
+						
+						@Override
+						public void start() {
+							Fractal fractal = new SierpCarpet(i,30,120,500);
+							setFract(fractal,viewObjects,null);
+						}
+						
+						@Override
+						public void reset() {
+							// TODO Auto-generated method stub
+							
+						}
+						
+						@Override
+						public boolean isFinished() {
+							// TODO Auto-generated method stub
+							return false;
+						}
+						
+						@Override
+						public int getTotal() {
+							// TODO Auto-generated method stub
+							return 0;
+						}
+						
+						@Override
+						public double getProgress() {
+							// TODO Auto-generated method stub
+							return 0;
+						}
+						
+						@Override
+						public String getDescriptionOfCurrentTask() {
+							// TODO Auto-generated method stub
+							return null;
+						}
+					});
+//					Fractal fractal = new SierpCarpet(iter,30,120,500);
+//					setFract(fractal,viewObjects,null);
+				}
+			}
+		});
+		viewObjects.remove(errorBox);
+		viewObjects.add(iterations);
+		viewObjects.add(treeButton);
+		viewObjects.add(sierpButton);
+		viewObjects.add(loading);
+	}
+	
+	public void setFract(Fractal fractal, List<Visible> viewObjects, Color c){
+		viewObjects.remove(fract);
+		fract = fractal;
+		if(c!=null)fract.setColor(c);
 		fract.update();
-		viewObjects.add(new TextField(400,200,100,25,"Enter Text Here","text"));
 		viewObjects.add(fract);
-//		viewObjects.add(testButton);
 	}
 
 }
