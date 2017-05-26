@@ -33,7 +33,7 @@ public class FractScreen extends FullFunctionScreen {
 	public void initAllObjects(List<Visible> viewObjects) {
 		iterations = new TextField(50,50,200,25,"Fractal Depth Here","Iterations");
 		TextBox errorBox = new TextBox(260,50,1000,25,"Error: Iterations must be an integer.");
-		loading = new ProgressBar(150, 100, 200, 20);
+		loading = new ProgressBar(150, 100, 200, 50);
 		treeButton = new Button(50,100,80,40,"Tree",new Color(0,76,153), new Action(){
 			public void act(){
 				String iterS = iterations.getText();
@@ -57,46 +57,16 @@ public class FractScreen extends FullFunctionScreen {
 				}
 				if(iter!=0){
 					final int i = iter;
-					loading.setTask(new Task() {
+					Fractal fractal = new SierpCarpet(iter,30,120,500);
+					loading.setTask(fractal);
+					loading.startTask(new Action() {
 						
 						@Override
-						public void start() {
-							Fractal fractal = new SierpCarpet(i,30,120,500);
+						public void act() {
+							System.out.println("Successful");
 							setFract(fractal,viewObjects,null);
 						}
-						
-						@Override
-						public void reset() {
-							// TODO Auto-generated method stub
-							
-						}
-						
-						@Override
-						public boolean isFinished() {
-							// TODO Auto-generated method stub
-							return false;
-						}
-						
-						@Override
-						public int getTotal() {
-							// TODO Auto-generated method stub
-							return 0;
-						}
-						
-						@Override
-						public double getProgress() {
-							// TODO Auto-generated method stub
-							return 0;
-						}
-						
-						@Override
-						public String getDescriptionOfCurrentTask() {
-							// TODO Auto-generated method stub
-							return null;
-						}
 					});
-//					Fractal fractal = new SierpCarpet(iter,30,120,500);
-//					setFract(fractal,viewObjects,null);
 				}
 			}
 		});

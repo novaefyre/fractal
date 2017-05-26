@@ -12,9 +12,13 @@ public class SierpCarpet extends Fractal {
 	private ArrayList<Rectangle> subSquares = new ArrayList<Rectangle>();
 	
 	public SierpCarpet(int i, int x, int y, int w) {
-		super(x, y, w+x, w+y);
+		super(i, x, y, w+x, w+y);
 		startSquare = new Rectangle(x,y,w,w);
-		draw(i);
+		for(int j = 0; j<i;j++){
+			totalIterations += Math.pow(8, j);
+		}
+		currentIteration = 1;
+		
 	}
 
 	@Override
@@ -27,10 +31,13 @@ public class SierpCarpet extends Fractal {
 			Rectangle center = new Rectangle(base.width/3+base.x, base.width/3+base.y, base.width/3-1, base.width/3-1);
 			if(center.width > 0 && center.height > 0)
 				subSquares.add(center);
+			
 			for(int i = 0; i < 9; i++){
 				if(i != 4){
 					Rectangle b = new Rectangle(base.x+(i%3*base.width/3), base.y+(i/3*base.width/3), base.width/3, base.width/3);
 					draw(iter-1,b);
+				}else{
+					currentIteration++;					
 				}
 			}
 		}

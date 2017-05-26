@@ -9,7 +9,7 @@ public class Tree extends Fractal {
 	private ArrayList<int[]> lineCoords;
 	
 	public Tree(int iter, int x, int y, int w, int h) {
-		super(x, y, w, h);
+		super(iter, x, y, w, h);
 		lineCoords = new ArrayList<int[]>();
 		draw(iter);
 		int maxX = maxCoord(2);
