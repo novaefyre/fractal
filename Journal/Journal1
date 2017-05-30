@@ -64,3 +64,8 @@ My work is complete! (Insert Maniacal laughter here).
 5/26/17
 Added a progress bar to SierpCarpet (with lots of help. Thanks, Mr. Nockles!). Next is a progress bar for Tree!
 I have extra time, So I will consider adding another Fractal and maybe some elements to the UI.
+
+5/30/17
+Making Buttons to change the size of the fractal (so that details past level 6 of the Sierpinsky Carpet) can be
+seen). Planning some more cosmetic changes. Also, if SierpCarpet requires more than Interger.MAX_INT iterations,
+It loops around and gets stuck. Should probably fix that.

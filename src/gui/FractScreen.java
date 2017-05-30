@@ -12,6 +12,7 @@ import guiTeacher.components.Button;
 import guiTeacher.components.ProgressBar;
 import guiTeacher.components.TextBox;
 import guiTeacher.components.TextField;
+import guiTeacher.components.TextLabel;
 import guiTeacher.interfaces.Task;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
@@ -21,6 +22,12 @@ public class FractScreen extends FullFunctionScreen {
 
 	private Button treeButton;
 	private Button sierpButton;
+	
+	private Button sizeUp;
+	private Button sizeDown;
+	private TextLabel sizeLabel;
+	private int size = 1;
+	
 	private TextField iterations;
 	private Fractal fract;
 	private ProgressBar loading;
@@ -43,7 +50,7 @@ public class FractScreen extends FullFunctionScreen {
 				}catch(Exception e){
 					viewObjects.add(errorBox);
 				}
-				if(iter!=0)setFract(new Tree(iter,30,120,1000,400),viewObjects,null);
+				if(iter!=0)setFract(new Tree(iter,30,120,1000*size,400*size),viewObjects,null);
 			}
 		});
 		sierpButton = new Button(50,150,120,40,"Sierpinski Square",new Color(0,76,153), new Action(){
@@ -56,20 +63,41 @@ public class FractScreen extends FullFunctionScreen {
 					viewObjects.add(errorBox);
 				}
 				if(iter!=0){
-					final int i = iter;
-					Fractal fractal = new SierpCarpet(iter,30,120,500);
+//					final int i = iter;
+					Fractal fractal = new SierpCarpet(iter,30,120,500*size);
 					loading.setTask(fractal);
 					loading.startTask(new Action() {
 						
 						@Override
 						public void act() {
-							System.out.println("Successful");
+//							System.out.println("Successful");
 							setFract(fractal,viewObjects,null);
 						}
 					});
 				}
 			}
 		});
+		sizeLabel = new TextLabel(300, 100, 50, 50, ""+size);
+		sizeUp = new Button(350,100,25,25,"↑",new Color(0,76,153),new Action(){
+			public void act(){
+				size++;
+				sizeLabel.setText(""+size);
+			}
+		});
+		sizeDown = new Button(350,125,25,25,"↓",new Color(0,76,153),new Action(){
+			public void act(){
+				if(size-1>0){
+					size--;
+					sizeLabel.setText(""+size);
+				}else{
+					errorBox.setText("Size Must be greater than zero.");
+					viewObjects.add(errorBox);
+				}
+			}
+		});
+		viewObjects.add(sizeLabel);
+		viewObjects.add(sizeDown);
+		viewObjects.add(sizeUp);
 		viewObjects.remove(errorBox);
 		viewObjects.add(iterations);
 		viewObjects.add(treeButton);
