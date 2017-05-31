@@ -52,7 +52,7 @@ public class FractScreen extends FullFunctionScreen {
 					errorBox.setText("Error: Iterations must be an integer.");
 					viewObjects.add(errorBox);
 				}
-				if(iter!=0)setFract(new Tree(iter,30,120,500,(400*size)),viewObjects,null);
+				if(iter!=0)setFract(new Tree(iter,30,120,500*size,(400*size)),viewObjects,null);
 			}
 		});
 		sierpButton = new Button(50,150,120,40,"Sierpinski Square",new Color(0,76,153), new Action(){
@@ -67,8 +67,9 @@ public class FractScreen extends FullFunctionScreen {
 					viewObjects.add(errorBox);
 				}
 				if(iter!=0){
-//					final int i = iter;
-					Fractal fractal = new SierpCarpet(iter,30,120,250*size);
+					int n = 0;
+					if(size%2==1)n=2;
+					Fractal fractal = new SierpCarpet(iter,30,120,(250*size)+n);
 					loading.setTask(fractal);
 					loading.startTask(new Action() {
 						
