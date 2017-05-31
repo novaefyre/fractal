@@ -26,7 +26,7 @@ public class FractScreen extends FullFunctionScreen {
 	private Button sizeUp;
 	private Button sizeDown;
 	private TextLabel sizeLabel;
-	private int size = 1;
+	private int size;
 	
 	private TextField iterations;
 	private Fractal fract;
@@ -39,7 +39,7 @@ public class FractScreen extends FullFunctionScreen {
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 		iterations = new TextField(50,50,200,25,"Fractal Depth Here","Iterations");
-		TextBox errorBox = new TextBox(260,50,1000,25,"Error: Iterations must be an integer.");
+		TextBox errorBox = new TextBox(260,50,1000,25,"");
 		loading = new ProgressBar(150, 100, 200, 50);
 		treeButton = new Button(50,100,80,40,"Tree",new Color(0,76,153), new Action(){
 			public void act(){
@@ -48,9 +48,11 @@ public class FractScreen extends FullFunctionScreen {
 				try{
 					iter = Math.abs(Integer.parseInt(iterS));
 				}catch(Exception e){
+					viewObjects.remove(errorBox);
+					errorBox.setText("Error: Iterations must be an integer.");
 					viewObjects.add(errorBox);
 				}
-				if(iter!=0)setFract(new Tree(iter,30,120,1000*size,400*size),viewObjects,null);
+				if(iter!=0)setFract(new Tree(iter,30,120,500,(400*size)),viewObjects,null);
 			}
 		});
 		sierpButton = new Button(50,150,120,40,"Sierpinski Square",new Color(0,76,153), new Action(){
@@ -60,11 +62,13 @@ public class FractScreen extends FullFunctionScreen {
 				try{
 					iter = Math.abs(Integer.parseInt(iterS));
 				}catch(Exception e){
+					viewObjects.remove(errorBox);
+					errorBox.setText("Error: Iterations must be an integer.");
 					viewObjects.add(errorBox);
 				}
 				if(iter!=0){
 //					final int i = iter;
-					Fractal fractal = new SierpCarpet(iter,30,120,500*size);
+					Fractal fractal = new SierpCarpet(iter,30,120,250*size);
 					loading.setTask(fractal);
 					loading.startTask(new Action() {
 						
@@ -77,19 +81,21 @@ public class FractScreen extends FullFunctionScreen {
 				}
 			}
 		});
-		sizeLabel = new TextLabel(300, 100, 50, 50, ""+size);
-		sizeUp = new Button(350,100,25,25,"↑",new Color(0,76,153),new Action(){
+		size = 1;
+		sizeLabel = new TextLabel(350, 100, 50, 50, ""+size);
+		sizeUp = new Button(400,100,25,25,"↑",new Color(0,76,153),new Action(){
 			public void act(){
 				size++;
 				sizeLabel.setText(""+size);
 			}
 		});
-		sizeDown = new Button(350,125,25,25,"↓",new Color(0,76,153),new Action(){
+		sizeDown = new Button(400,125,25,25,"↓",new Color(0,76,153),new Action(){
 			public void act(){
 				if(size-1>0){
 					size--;
 					sizeLabel.setText(""+size);
 				}else{
+					viewObjects.remove(errorBox);
 					errorBox.setText("Size Must be greater than zero.");
 					viewObjects.add(errorBox);
 				}

@@ -9,8 +9,8 @@ import guiTeacher.interfaces.Task;
 public abstract class Fractal extends Component implements Task{
 	
 	Color color;
-	protected int currentIteration;
-	protected int totalIterations;
+	protected long currentIteration;
+	protected long totalIterations;
 	protected int depth;
 
 	public Fractal(int i, int x, int y, int w, int h) {
@@ -32,7 +32,7 @@ public abstract class Fractal extends Component implements Task{
 	}
 
 	@Override
-	public int getTotal() {
+	public long getTotal() {
 		// TODO Auto-generated method stub
 		return totalIterations;
 	}

@@ -68,4 +68,8 @@ I have extra time, So I will consider adding another Fractal and maybe some elem
 5/30/17
 Making Buttons to change the size of the fractal (so that details past level 6 of the Sierpinsky Carpet) can be
 seen). Planning some more cosmetic changes. Also, if SierpCarpet requires more than Interger.MAX_INT iterations,
-It loops around and gets stuck. Should probably fix that.
+it loops around and gets stuck. Should probably fix that.
+
+5/31/17
+Fixed the looping bug by making totalIterations a long instead of an int. the size changing buttons work as
+expected.

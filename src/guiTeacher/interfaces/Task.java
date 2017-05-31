@@ -11,7 +11,7 @@ public interface Task {
 	 * 
 	 * @return total number of tasks to complete
 	 */
-	int getTotal();
+	long getTotal();
 	
 	void start();
 	
