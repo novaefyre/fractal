@@ -241,7 +241,7 @@ public class TextField extends StyledComponent implements KeyedComponent,Clickab
 			text = t.substring(0,cursorIndex)+c+t.substring(cursorIndex,t.length());
 			cursorIndex++;
 			update();
-		}else if(inputType == INPUT_TYPE_NUMERIC && (c== 46 || c >=48 && c <57)){
+		}else if(inputType == INPUT_TYPE_NUMERIC && (c== 46 || c >=48 && c <=57)){
 
 			text = t.substring(0,cursorIndex)+c+t.substring(cursorIndex,t.length());
 			cursorIndex++;

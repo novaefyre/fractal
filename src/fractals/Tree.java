@@ -38,9 +38,6 @@ public class Tree extends Fractal {
 			newCoords[1] = oldCoords[3];
 			newCoords[2] = newCoords[0] + (int) (Math.cos(Math.toRadians(angle)) * iter * 5);
 			newCoords[3] = newCoords[1] + (int) (Math.sin(Math.toRadians(angle)) * iter * 5);
-//			double tangentX = Math.tan(Math.toRadians(angle));
-//			if(tangentX != 0)
-//				newCoords[2] += (int)(newCoords[1]-newCoords[3])*Math.round(tangentX);
 			lineCoords.add(newCoords);
 			draw(iter-1, newCoords,angle+15);
 			draw(iter-1, newCoords,angle-15);

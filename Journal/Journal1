@@ -71,5 +71,8 @@ seen). Planning some more cosmetic changes. Also, if SierpCarpet requires more t
 it loops around and gets stuck. Should probably fix that.
 
 5/31/17
-Fixed the looping bug by making totalIterations a long instead of an int. the size changing buttons work as
+Fixed the looping bug by making totalIterations a long instead of an int. The size changing buttons work as
 expected.
+
+6/1/17
+Tried to add buttons for changing the number of iterations, but it breaks the text box for some reason. Moved on to my presentation.

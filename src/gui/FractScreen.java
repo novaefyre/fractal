@@ -29,8 +29,13 @@ public class FractScreen extends FullFunctionScreen {
 	private int size;
 	
 	private TextField iterations;
+	private Button iterUp;
+	private Button iterDown;
+	private int i;
+	
 	private Fractal fract;
 	private ProgressBar loading;
+	private TextBox errorBox;
 	
 	public FractScreen(int width, int height) {
 		super(width, height);
@@ -38,8 +43,29 @@ public class FractScreen extends FullFunctionScreen {
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
+		errorBox = new TextBox(260,50,1000,25,"");
 		iterations = new TextField(50,50,200,25,"Fractal Depth Here","Iterations");
-		TextBox errorBox = new TextBox(260,50,1000,25,"");
+		iterations.setInputType(TextField.INPUT_TYPE_NUMERIC);
+		i = 0;
+		iterUp = new Button(25,25,25,25,"↑",new Color(0,76,153),new Action(){
+
+			@Override
+			public void act() {
+				i++;
+				iterations.setText(""+i);
+			}
+			
+		});
+		iterDown = new Button(25,50,25,25,"↓",new Color(0,76,153),new Action(){
+
+			@Override
+			public void act() {
+				i--;
+				iterations.setText(""+i);
+			}
+			
+		});
+		
 		loading = new ProgressBar(150, 100, 200, 50);
 		treeButton = new Button(50,100,80,40,"Tree",new Color(0,76,153), new Action(){
 			public void act(){
@@ -82,6 +108,7 @@ public class FractScreen extends FullFunctionScreen {
 				}
 			}
 		});
+		
 		size = 1;
 		sizeLabel = new TextLabel(350, 100, 50, 50, ""+size);
 		sizeUp = new Button(400,100,25,25,"↑",new Color(0,76,153),new Action(){
@@ -110,6 +137,8 @@ public class FractScreen extends FullFunctionScreen {
 		viewObjects.add(treeButton);
 		viewObjects.add(sierpButton);
 		viewObjects.add(loading);
+//		viewObjects.add(iterUp);
+//		viewObjects.add(iterDown);
 	}
 	
 	public void setFract(Fractal fractal, List<Visible> viewObjects, Color c){
