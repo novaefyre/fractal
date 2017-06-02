@@ -75,4 +75,8 @@ Fixed the looping bug by making totalIterations a long instead of an int. The si
 expected.
 
 6/1/17
-Tried to add buttons for changing the number of iterations, but it breaks the text box for some reason. Moved on to my presentation.
+Tried to add buttons for changing the number of iterations, but it breaks the text box for some reason. Moved on
+to my presentation.
+
+6/2/17
+Finished PowerPoint™ Presentation. Will work on fixing buttons for changing number of iterations next.
