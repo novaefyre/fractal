@@ -42,7 +42,7 @@ public abstract class GUIApplication extends JFrame implements Runnable{
 	public GUIApplication(int width, int height){
 		super();
 		scaleWithWindow = true;
-		setBounds(20, 20, width, height);
+		setBounds(0, 0, width, height);
 		initScreen();
 		setUndecorated(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

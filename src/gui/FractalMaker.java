@@ -11,7 +11,7 @@ public class FractalMaker extends GUIApplication {
 	public static FractalMaker game;;
 	
 	public FractalMaker(){
-		super(800,500);
+		super((int) java.awt.Toolkit.getDefaultToolkit().getScreenSize().getWidth(),(int) java.awt.Toolkit.getDefaultToolkit().getScreenSize().getHeight());
 	}
 	
 	public static void main(String[] args){

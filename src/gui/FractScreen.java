@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.Color;
-import java.util.ArrayList;
 import java.util.List;
 
 import fractals.Fractal;
@@ -13,7 +12,6 @@ import guiTeacher.components.ProgressBar;
 import guiTeacher.components.TextBox;
 import guiTeacher.components.TextField;
 import guiTeacher.components.TextLabel;
-import guiTeacher.interfaces.Task;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 
@@ -44,15 +42,20 @@ public class FractScreen extends FullFunctionScreen {
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 		errorBox = new TextBox(260,50,1000,25,"");
-		iterations = new TextField(50,50,200,25,"Fractal Depth Here","Iterations");
+		iterations = new TextField(50,50,200,25,"1","Iterations");
 		iterations.setInputType(TextField.INPUT_TYPE_NUMERIC);
 		i = 0;
 		iterUp = new Button(25,25,25,25,"↑",new Color(0,76,153),new Action(){
 
 			@Override
 			public void act() {
-				i++;
-				iterations.setText(""+i);
+				try{
+					i = Integer.parseInt(iterations.getText())+1;
+					iterations.setText(""+i);
+				}catch(Exception e){
+					i++;
+					iterations.setText(""+i);
+				}
 			}
 			
 		});
@@ -60,8 +63,13 @@ public class FractScreen extends FullFunctionScreen {
 
 			@Override
 			public void act() {
-				i--;
-				iterations.setText(""+i);
+				try{
+					i = Integer.parseInt(iterations.getText())-1;
+					iterations.setText(""+i);
+				}catch(Exception e){
+					i--;
+					iterations.setText(""+i);
+				}
 			}
 			
 		});
@@ -137,8 +145,8 @@ public class FractScreen extends FullFunctionScreen {
 		viewObjects.add(treeButton);
 		viewObjects.add(sierpButton);
 		viewObjects.add(loading);
-//		viewObjects.add(iterUp);
-//		viewObjects.add(iterDown);
+		viewObjects.add(iterUp);
+		viewObjects.add(iterDown);
 	}
 	
 	public void setFract(Fractal fractal, List<Visible> viewObjects, Color c){
