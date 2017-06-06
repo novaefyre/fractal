@@ -29,15 +29,20 @@ public class SierpCarpet extends Fractal {
 	public void draw(int iter, Rectangle base){
 		if(iter > 0){
 			Rectangle center = new Rectangle(base.width/3+base.x, base.width/3+base.y, base.width/3-1, base.width/3-1);
-			if(center.width > 0 && center.height > 0)
+			if(center.width > 0 && center.height > 0){
 				subSquares.add(center);
 			
-			for(int i = 0; i < 9; i++){
-				if(i != 4){
-					Rectangle b = new Rectangle(base.x+(i%3*base.width/3), base.y+(i/3*base.width/3), base.width/3, base.width/3);
-					draw(iter-1,b);
-				}else{
-					currentIteration++;					
+				for(int i = 0; i < 9; i++){
+					if(i != 4){
+						Rectangle b = new Rectangle(base.x+(i%3*base.width/3), base.y+(i/3*base.width/3), base.width/3, base.width/3);
+						draw(iter-1,b);
+					}else{
+						currentIteration++;					
+					}
+				}
+			}else{
+				for(int j = 0; j<iter;j++){
+					currentIteration += Math.pow(8, j);
 				}
 			}
 		}

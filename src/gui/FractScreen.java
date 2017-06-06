@@ -20,6 +20,7 @@ public class FractScreen extends FullFunctionScreen {
 
 	private Button treeButton;
 	private Button sierpButton;
+	private Button clear;
 	
 	private Button sizeUp;
 	private Button sizeDown;
@@ -137,6 +138,17 @@ public class FractScreen extends FullFunctionScreen {
 				}
 			}
 		});
+		
+		clear = new Button(450,100,80,40,"Clear",new Color(0,76,153),new Action(){
+
+			@Override
+			public void act() {
+				viewObjects.remove(fract);
+			}
+			
+		});
+		
+		viewObjects.add(clear);
 		viewObjects.add(sizeLabel);
 		viewObjects.add(sizeDown);
 		viewObjects.add(sizeUp);
